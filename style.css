@@ -1,0 +1,89 @@
+
+:root {
+    --fur: #d4a373;
+    --ear: #8b5a2b;
+    --eye: #000;
+    --nose: #333;
+    --tongue: #ff6666;
+}
+
+body {
+    display: flex;
+    justify-content: center;
+    align-items: center;
+    height: 100vh;
+    background-color: #f0f0f0;
+}
+
+.dog {
+    position: relative;
+    width: 200px;
+    height: 220px;
+    cursor: pointer;
+}
+
+.ear {
+    position: absolute;
+    width: 50px;
+    height: 70px;
+    background: var(--ear);
+    clip-path: polygon(50% 0%, 0% 100%, 100% 100%);
+    top: 10px;
+}
+.ear.left { left: 20px; transform: rotate(-15deg); }
+.ear.right { right: 20px; transform: rotate(15deg); }
+
+.face {
+    position: absolute;
+    width: 140px;
+    height: 140px;
+    background: var(--fur);
+    border-radius: 50%;
+    top: 40px;
+    left: 30px;
+}
+
+.eye {
+    position: absolute;
+    width: 20px;
+    height: 20px;
+    background: var(--eye);
+    border-radius: 50%;
+    top: 50px;
+}
+.eye.left { left: 35px; }
+.eye.right { right: 35px; }
+
+.nose {
+    position: absolute;
+    width: 30px;
+    height: 20px;
+    background: var(--nose);
+    border-radius: 50%;
+    top: 80px;
+    left: 55px;
+}
+
+.mouth {
+    position: absolute;
+    width: 50px;
+    height: 30px;
+    background: var(--tongue);
+    border-radius: 20px 20px 50px 50px;
+    bottom: 10px;
+    left: 45px;
+    transform: scaleY(0);
+    transition: transform 0.2s ease-in-out;
+}
+
+.dog:hover .mouth {
+    transform: scaleY(1);
+}
+.dog:hover .eye {
+    animation: blink 0.5s infinite;
+}
+
+@keyframes blink {
+    0%, 100% { transform: scaleY(1); }
+    50% { transform: scaleY(0.1); }
+}
